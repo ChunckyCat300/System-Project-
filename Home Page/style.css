@@ -1,0 +1,673 @@
+/* =========================================
+   1. CUSTOM VARIABLES & RESET (GLOSSY DARK GLASS)
+========================================= */
+:root {
+    /* True Glassmorphism Palette matching Login Page */
+    --glass-bg: rgba(30, 41, 59, 0.55);         /* Frosted slate-blue glass */
+    --glass-bg-elevated: rgba(15, 23, 42, 0.85);/* Deeper glass for popups/footer */
+    --glass-card: rgba(255, 255, 255, 0.05);    /* Subtle inner card gloss */
+    --glass-card-hover: rgba(255, 255, 255, 0.12);
+    
+    /* Borders & Highlights */
+    --border-color: rgba(255, 255, 255, 0.14);  /* Crisp glass edge */
+    --border-highlight: rgba(255, 255, 255, 0.28);
+    
+    /* Brand & Accent Colors */
+    --primary-color: #3b82f6;                   /* Vibrant Royal Blue (matches Login button) */
+    --primary-hover: #2563eb;
+    --accent-glow: #60a5fa;                     /* Soft sky blue for text highlights */
+    --gold-accent: #fbbf24;                     /* Warm gold from Moon & Mug badge */
+    
+    /* Text Colors */
+    --text-main: #f8fafc;                       /* Crisp off-white */
+    --text-muted: #94a3b8;                      /* Muted slate silver */
+    --text-placeholder: #64748b;
+    
+    /* Layout Sizes */
+    --layout-gap: 18px;
+    --header-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    /* Matches the cozy blurred cafe backdrop */
+    background-image: linear-gradient(rgba(10, 15, 29, 0.72), rgba(10, 15, 29, 0.88)), url('../Login Page/Cozy.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-main);
+    overflow: hidden;
+}
+
+/* Custom Sleek Glass Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* =========================================
+   2. MAIN GRID LAYOUT
+========================================= */
+.container {
+    display: grid;
+    grid-template-columns: 200px 1fr 320px;
+    grid-template-rows: var(--header-height) 1fr 80px; 
+    gap: var(--layout-gap);
+    height: 100vh;
+    padding: var(--layout-gap);
+    min-width: 1000px; 
+}
+
+/* Base Glossy Glass Style for all Panels */
+.item {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.03));
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--border-color);
+    overflow: hidden; 
+}
+
+/* Panel 1: Header */
+.item:nth-child(1) { 
+    grid-column: 1 / -1; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    overflow: visible; /* Allows dropdown to pop out over the grid */
+    z-index: 100;
+}
+
+/* Panel 2: Navigation Sidebar */
+.item:nth-child(2) { 
+    grid-column: 1; 
+    grid-row: 2 / 4; 
+} 
+
+/* Panel 3: Product Content Area */
+.item:nth-child(3) { 
+    grid-column: 2; 
+    grid-row: 2; 
+    overflow-y: auto; 
+}
+
+/* Panel 4: Preview Footer (Staging Area) - FIXED DARK GLASS */
+.item:nth-child(4) { 
+    grid-column: 2; 
+    grid-row: 3; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    background: var(--glass-bg-elevated);
+    border: 1px solid var(--accent-glow); 
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Panel 5: Cart Sidebar */
+.item:nth-child(5) { 
+    grid-column: 3; 
+    grid-row: 2 / 4; 
+    display: flex; 
+    flex-direction: column; 
+}
+
+/* =========================================
+   3. HEADER & NAVIGATION STYLES
+========================================= */
+.header h2 {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--accent-glow);
+    text-shadow: 0 2px 10px rgba(96, 165, 250, 0.3);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 14px;
+    display: block;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    color: var(--text-main);
+}
+
+.nav-links a.active {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.35), rgba(37, 99, 235, 0.15));
+    color: #ffffff;
+    border: 1px solid rgba(96, 165, 250, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   4. PRODUCT GRID & CARDS
+========================================= */
+.content h3 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+    gap: 18px;
+    padding: 6px 0;
+}
+
+.product-card {
+    background: var(--glass-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px 12px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.22s ease; 
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    background: var(--glass-card-hover);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45), 0 0 12px rgba(96, 165, 250, 0.25);
+    border-color: var(--accent-glow);
+}
+
+.product-card:active {
+    transform: translateY(1px) scale(0.97);
+}
+
+.product-icon img {
+    max-width: 100%;
+    height: auto;
+    max-height: 80px; 
+    object-fit: contain;
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.35));
+}
+
+.product-icon {
+    font-size: 40px;
+}
+
+.product-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-top: 4px;
+}
+
+.product-card-price {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-glow);
+}
+
+/* =========================================
+   5. PREVIEW FOOTER (STAGING AREA)
+========================================= */
+.preview-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.preview-price {
+    font-size: 14px;
+    color: var(--accent-glow);
+    margin-top: 3px;
+    font-weight: 600;
+}
+
+.preview-controls {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.qty-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border-highlight);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.qty-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--accent-glow);
+    transform: scale(1.05);
+}
+
+.add-btn {
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+    transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.6);
+}
+
+/* =========================================
+   6. CART SIDEBAR STYLES
+========================================= */
+.cart-items-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding-right: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.empty-cart-msg {
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    background-color: rgba(15, 23, 42, 0.55); /* Deep glossy inset */
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.cart-item-name {
+    font-weight: 700;
+    color: var(--text-main);
+    font-size: 15px;
+}
+
+.cart-item-sum {
+    color: var(--accent-glow);
+    font-size: 15px;
+}
+
+.cart-item-price {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.cart-summary {
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+}
+
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--accent-glow);
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-color); /* Matches Login Sign In Button */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35);
+    transition: all 0.25s ease;
+}
+
+.checkout-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.55);
+}
+
+/* =========================================
+   7. IN-CART CUSTOMIZATION & CONTROLS (FIXED)
+========================================= */
+.cart-item-customizations {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+/* FIXED: Dark Glass Select Dropdowns so text is visible */
+.cart-custom-select {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(15, 23, 42, 0.85);
+    color: var(--text-main);
+    font-size: 12px;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cart-custom-select:hover,
+.cart-custom-select:focus {
+    border-color: var(--accent-glow);
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+
+/* Ensures the open dropdown list options have a dark background */
+.cart-custom-select option {
+    background-color: #0f172a;
+    color: #f8fafc;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 6px;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.cart-qty-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.cart-qty-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--accent-glow);
+}
+
+/* =========================================
+   8. PRINT STYLES (RECEIPT)
+========================================= */
+@media screen {
+    .print-only {
+        display: none;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .print-only, .print-only * {
+        visibility: visible;
+    }
+    .print-only {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 300px;
+        padding: 10px;
+        font-family: 'Courier New', Courier, monospace;
+        color: #000;
+        background: #fff;
+    }
+    
+    .receipt-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .receipt-header h1 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+    .receipt-header p {
+        margin: 3px 0;
+        font-size: 11px;
+    }
+    
+    .item-meta {
+        font-size: 10px;
+        color: #555;
+        margin-top: 2px;
+        font-weight: normal;
+    }
+}
+
+/* =========================================
+   9. MODERN PROFILE DROPDOWN
+========================================= */
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
+    padding: 6px 14px 6px 8px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    transition: all 0.2s ease;
+}
+
+.profile-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: var(--border-highlight);
+}
+
+.chevron {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.btn-avatar, .card-avatar {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f59e0b, #ea580c);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.card-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+}
+
+.online-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #10b981;
+    border: 2px solid #0f172a;
+    border-radius: 50%;
+}
+
+.dropdown-card {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    width: 230px;
+    background-color: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--border-highlight);
+    padding: 8px 0;
+    z-index: 999;
+}
+
+.dropdown-card.show {
+    display: block;
+    animation: fadeInDropdown 0.15s ease-out;
+}
+
+@keyframes fadeInDropdown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-user-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+}
+
+.card-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-user-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.card-user-status {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 6px 0;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.15s ease;
+}
+
+/* FIXED: Hover stays dark-glass instead of turning white */
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dropdown-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+}
+
+.dropdown-arrow {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1;
+}
+
+.logout-item {
+    color: #f87171;
+}
+
+.logout-item .dropdown-icon {
+    color: #f87171;
+}
+
+.logout-item:hover {
+    background-color: rgba(239, 68, 68, 0.15);
+}

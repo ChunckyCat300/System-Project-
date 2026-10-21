@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Moon & Mug</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Dynamic Header with Return Button -->
+        <div class="item header">
+            <div class="header-left">
+                <a href="../Home Page/index.html" class="back-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Back to POS
+                </a>
+                <h2 id="welcome-text">Admin Control Panel</h2>
+            </div>
+
+            <div class="profile-section">
+                <span id="user-profile-name" class="user-name">Admin</span>
+                <a href="../Login Page/index.html" id="logout-btn" class="logout-btn">Log out</a>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="item sidebar">
+            <ul class="nav-links">
+                <li><a href="#" class="sidebar-link active" data-target="sales-section">Sales Dashboard</a></li>
+                <li><a href="#" class="sidebar-link" data-target="inventory-section">Manage Inventory</a></li>
+                <li><a href="#" class="sidebar-link" data-target="staff-section">Staff Accounts</a></li>
+                <li><a href="#" class="sidebar-link" data-target="settings-section">System Settings</a></li>
+            </ul>
+        </div>
+
+        <!-- Content Area -->
+        <div class="item content">
+            
+            <!-- 1. SALES DASHBOARD SECTION -->
+            <div id="sales-section" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h3>Sales Overview</h3>
+                    <!-- Time Filters -->
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-filter="daily">Daily</button>
+                        <button class="filter-btn" data-filter="weekly">Weekly</button>
+                        <button class="filter-btn" data-filter="monthly">Monthly</button>
+                        <button class="filter-btn" data-filter="annually">Annually</button>
+                        <button class="filter-btn" data-filter="all">All Time</button>
+                    </div>
+                </div>
+                
+                <!-- Summary Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Total Revenue</h4>
+                        <p id="total-revenue">₱0.00</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Total Orders</h4>
+                        <p id="total-orders">0</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--text-main);">
+                    Transaction History <span id="current-filter-label" style="color: var(--text-muted); font-size: 16px;">(Daily)</span>
+                </h3>
+                
+                <!-- Sales Table -->
+                <div class="table-container">
+                    <table class="sales-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Cashier</th>
+                                <th>Items Sold</th>
+                                <th>Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sales-table-body">
+                            <!-- JavaScript will inject sales here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. MANAGE INVENTORY SECTION -->
+            <div id="inventory-section" class="dashboard-section" style="display: none;">
+                <div class="dashboard-header">
+                    <h3>Manage Inventory</h3>
+                </div>
+                
+                <div class="table-container">
+                    <table class="sales-table">
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Category</th>
+                                <th>Current Stock</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Plastic Cups (16oz)</td>
+                                <td>Packaging</td>
+                                <td><span style="color: #f87171; font-weight: bold;">45 pcs (Low)</span></td>
+                                <td><button class="action-btn restock-btn">Restock</button></td>
+                            </tr>
+                            <tr>
+                                <td>Boba Pearls</td>
+                                <td>Ingredients</td>
+                                <td>12 kg</td>
+                                <td><button class="action-btn restock-btn">Restock</button></td>
+                            </tr>
+                            <tr>
+                                <td>Jumbo Straws</td>
+                                <td>Packaging</td>
+                                <td>450 pcs</td>
+                                <td><button class="action-btn restock-btn">Restock</button></td>
+                            </tr>
+                            <tr>
+                                <td>Espresso Beans</td>
+                                <td>Ingredients</td>
+                                <td>8 kg</td>
+                                <td><button class="action-btn restock-btn">Restock</button></td>
+                            </tr>
+                            <tr>
+                                <td>Whole Milk</td>
+                                <td>Dairy</td>
+                                <td>18 Liters</td>
+                                <td><button class="action-btn restock-btn">Restock</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 3. STAFF ACCOUNTS SECTION -->
+            <div id="staff-section" class="dashboard-section" style="display: none;">
+                <div class="dashboard-header">
+                    <h3>Staff Accounts</h3>
+                    <button class="primary-btn">+ Add New Staff</button>
+                </div>
+                
+                <div class="table-container">
+                    <table class="sales-table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>admin</td>
+                                <td>Administrator</td>
+                                <td><span style="color: #34d399; font-weight: bold;">Active</span></td>
+                                <td><button class="action-btn" disabled style="opacity: 0.5; cursor: not-allowed;">System Locked</button></td>
+                            </tr>
+                            <tr>
+                                <td>staff</td>
+                                <td>Cashier</td>
+                                <td><span style="color: #34d399; font-weight: bold;">Active</span></td>
+                                <td><button class="action-btn reset-pass-btn">Reset Password</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 4. SYSTEM SETTINGS SECTION -->
+            <div id="settings-section" class="dashboard-section" style="display: none;">
+                <div class="dashboard-header">
+                    <h3>System Settings</h3>
+                </div>
+                
+                <div class="settings-form">
+                    <div class="setting-group">
+                        <label>Store Name</label>
+                        <input type="text" value="Moon & Mug" class="glass-input">
+                    </div>
+                    <div class="setting-group">
+                        <label>Tax Rate (%)</label>
+                        <input type="number" value="12" class="glass-input">
+                    </div>
+                    <div class="setting-group">
+                        <label>Receipt Footer Message</label>
+                        <input type="text" value="Thank you for your purchase! Please come again." class="glass-input">
+                    </div>
+                    
+                    <button id="save-settings-btn" class="primary-btn" style="margin-top: 15px;">Save Changes</button>
+                    <p id="settings-msg" style="color: #34d399; font-size: 14px; margin-top: 10px; display: none;">Settings saved successfully!</p>
+                </div>
+            </div>
+
+    <!-- Ensure this links to your admin javascript file -->
+    <script src="script.js"></script>
+</body>
+</html>

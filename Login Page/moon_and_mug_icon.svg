@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Moon &amp; Mug — Brewed by Moonlight</title>
+  <desc id="desc">A navy circular café badge with a blue crescent moon, mug, golden stars, and gold lettering.</desc>
+  <defs>
+    <radialGradient id="navy" cx="48%" cy="35%" r="75%"><stop offset="0" stop-color="#0b1b30"/><stop offset="1" stop-color="#061225"/></radialGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3978b6"/><stop offset="1" stop-color="#1b4b7d"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#ffe18a"/><stop offset="1" stop-color="#e8ad3d"/></linearGradient>
+  </defs>
+  <!-- circular medallion -->
+  <circle cx="512" cy="512" r="492" fill="#071326"/>
+  <circle cx="512" cy="512" r="474" fill="url(#navy)" stroke="#e5b54f" stroke-width="8"/>
+  <circle cx="512" cy="512" r="488" fill="none" stroke="#101c2b" stroke-width="12"/>
+  <!-- crescent moon -->
+  <path d="M566 126 C442 121 349 213 349 334 C349 451 442 535 554 526 C600 522 640 502 669 469 C623 493 564 485 522 452 C454 399 438 302 483 224 C504 188 533 151 566 126Z" fill="url(#blue)"/>
+  <path d="M458 171 C414 207 383 268 376 329 C373 353 375 377 381 398 C383 323 410 240 458 171Z" fill="#78a8d7" opacity=".8"/>
+  <!-- stars -->
+  <path d="M570 183 l11 31 33 1 -26 20 9 32 -27 -19 -27 19 10 -32 -27 -20 33 -1Z" fill="url(#gold)"/>
+  <path d="M496 271 l8 22 24 1 -19 14 7 23 -20 -14 -20 14 7 -23 -19 -14 24 -1Z" fill="url(#gold)"/>
+  <path d="M650 281 l8 22 24 1 -19 14 7 23 -20 -14 -20 14 7 -23 -19 -14 24 -1Z" fill="url(#gold)"/>
+  <!-- golden rim / orbit above the mug -->
+  <path d="M452 349 C524 340 614 351 670 383 C713 408 703 438 650 454 C574 477 438 469 360 442 C318 427 311 403 343 382" fill="none" stroke="url(#gold)" stroke-width="12" stroke-linecap="round"/>
+  <!-- mug body -->
+  <path d="M332 448 C345 547 395 622 482 642 C575 663 656 600 682 449 C606 478 414 479 332 448Z" fill="url(#blue)" stroke="#1c4e80" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M693 467 C734 432 781 453 786 495 C792 539 750 570 704 584" fill="none" stroke="#1d4e80" stroke-width="35" stroke-linecap="round"/>
+  <path d="M703 470 C733 452 758 471 758 496 C758 523 738 544 714 556" fill="none" stroke="#3978b6" stroke-width="19" stroke-linecap="round"/>
+  <path d="M354 478 C365 530 386 567 417 590 C392 551 379 515 375 486Z" fill="#79a9d7" opacity=".75"/>
+  <!-- wordmark -->
+  <text x="512" y="755" text-anchor="middle" fill="url(#gold)" font-family="Georgia, 'Times New Roman', serif" font-size="91" font-weight="bold" letter-spacing="1">MOON &amp; MUG</text>
+  <circle cx="230" cy="808" r="7" fill="url(#gold)"/><circle cx="794" cy="808" r="7" fill="url(#gold)"/>
+  <text x="512" y="820" text-anchor="middle" fill="url(#gold)" font-family="Arial, Helvetica, sans-serif" font-size="29" letter-spacing="5.5">BREWED BY MOONLIGHT</text>
+</svg>

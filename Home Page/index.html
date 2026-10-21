@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page - Moon & Mug</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Dynamic Header with Modern Dropdown -->
+        <div class="item header">
+            <h2 id="welcome-text">MOON & MUG</h2>
+            
+            <div class="profile-dropdown">
+                <button class="profile-btn" id="profile-btn">
+                    <div class="btn-avatar">
+                        <span id="btn-avatar-letter">U</span>
+                        <span class="online-dot"></span>
+                    </div>
+                    <span id="user-profile-name">User</span>
+                    <span class="chevron">▼</span>
+                </button>
+
+                <!-- Dropdown Menu Card -->
+                <div class="dropdown-card" id="dropdown-card">
+                    <!-- Top User Info Section (Shows "Admin" or "Staff") -->
+                    <div class="dropdown-user-header">
+                        <div class="card-avatar">
+                            <span id="card-avatar-letter">U</span>
+                            <span class="online-dot"></span>
+                        </div>
+                        <div class="card-user-info">
+                            <span id="dropdown-role-name" class="card-user-name">Staff</span>
+                            <span class="card-user-status">Online</span>
+                        </div>
+                    </div>
+
+                    <!-- Admin Exclusive Section (Hidden by default for Staff) -->
+                    <div id="admin-menu-section" style="display: none;">
+                        <div class="dropdown-divider"></div>
+                        <a href="../Admin Dashboard/index.html" id="menu-dashboard" class="dropdown-item">
+                            <span class="dropdown-item-left">
+                                <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                Dashboard
+                            </span>
+                            <span class="dropdown-arrow">›</span>
+                        </a>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
+                    <!-- Logout (Visible to both Admin and Staff) -->
+                    <a href="../Login Page/index.html" id="logout-btn" class="dropdown-item logout-item">
+                        <span class="dropdown-item-left">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                            Log out
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="item sidebar">
+            <ul class="nav-links">
+                <li><a href="#" class="category-link active" data-category="milktea">Milk Tea</a></li>
+                <li><a href="#" class="category-link" data-category="frappe">Frappe</a></li>
+                <li><a href="#" class="category-link" data-category="refreshers">Refreshers</a></li>
+                <li><a href="#" class="category-link" data-category="icedCoffee">Iced Coffee</a></li>
+                <li><a href="#" class="category-link" data-category="hotCoffee">Hot Coffee</a></li>
+                <li><a href="#" class="category-link" data-category="tea">Tea</a></li>
+                <li><a href="#" class="category-link" data-category="pastries">Pastries</a></li>
+                <li><a href="#" class="category-link" data-category="lightMeals">Light Meals</a></li>
+            </ul>
+        </div>
+
+        <!-- Content Area -->
+        <div class="item content">
+            <h3 id="category-title">Milk Tea</h3>
+            <div id="product-grid" class="product-grid"></div>
+        </div>
+
+        <!-- Preview Footer (Staging Area) -->
+        <div class="item preview-footer" id="preview-footer" style="display: none;">
+            <div class="preview-details">
+                <div id="preview-name" class="preview-name">Product Name</div>
+                <div id="preview-price" class="preview-price">₱0.00</div>
+            </div>
+            
+            <div class="preview-controls">
+                <button id="qty-minus" class="qty-btn">-</button>
+                <span id="preview-qty">1</span>
+                <button id="qty-plus" class="qty-btn">+</button>
+            </div>
+            
+            <div class="preview-action">
+                <button id="add-to-cart-btn" class="add-btn">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Cart Sidebar -->
+        <div class="item cart-sidebar">
+            <!-- Selected items appear here -->
+            <div id="cart-items" class="cart-items-container">
+                <div class="empty-cart-msg">Cart is empty</div>
+            </div>
+            
+            <!-- Checkout Section -->
+            <div class="cart-summary">
+                <div class="cart-total-row">
+                    <span>Total:</span>
+                    <span id="cart-total-price">₱0.00</span>
+                </div>
+                <button id="checkout-btn" class="checkout-btn">Checkout</button>
+            </div>
+        </div>  
+    </div>
+
+    <!-- Hidden Receipt Template (For Printing Only) -->
+    <div id="print-receipt" class="print-only">
+        <div class="receipt-header">
+            <h1>MOON & MUG</h1>
+            <p>Quezon City, Metro Manila</p>
+            <p>Date: <span id="receipt-date"></span></p>
+            <p>Cashier: <span id="receipt-cashier"></span></p>
+        </div>
+        
+        <table style="width: 100%; text-align: left; border-collapse: collapse;">
+            <thead>
+                <tr style="border-bottom: 1px dashed #000;">
+                    <th style="width: 15%; text-align: center; padding-bottom: 5px;">QTY</th>
+                    <th style="width: 60%; padding-bottom: 5px;">ITEM</th>
+                    <th style="width: 25%; text-align: right; padding-bottom: 5px;">AMT</th>
+                </tr>
+            </thead>
+            <tbody id="receipt-items">
+                <!-- JavaScript will inject rows here -->
+            </tbody>
+        </table>
+        
+        <div style="border-bottom: 1px dashed #000; margin: 15px 0;"></div>
+        
+        <div class="receipt-totals" style="display: flex; justify-content: space-between; font-weight: bold; font-size: 16px;">
+            <span>TOTAL:</span>
+            <span id="receipt-total">₱0.00</span>
+        </div>
+        
+        <div class="receipt-footer" style="text-align: center; margin-top: 30px; font-size: 11px;">
+            <p>Thank you for your purchase!</p>
+            <p>Please come again.</p>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
